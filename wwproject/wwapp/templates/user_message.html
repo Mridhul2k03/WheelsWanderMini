@@ -1,0 +1,18 @@
+{% extends 'user_index.html' %}
+
+{% block content %}
+<div style="height: 70px;" class="w-100">
+</div>
+<div class="card mx-auto " style="width: 50rem;">
+  <div class="card-body">
+    <form action="" method="POST" class="">
+        {% csrf_token %}
+        {{form.fname}} 
+        {{form.email}} <br> <br>
+        {{form.message}}
+        <br>
+        <button type="submit" class="btn btn-outline-dark ">Send message</button>
+    </form>
+  </div>
+</div>
+{% endblock content %}

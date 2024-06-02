@@ -1,0 +1,12 @@
+{% extends 'user_cars.html' %}
+
+{% block content %}
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <form method="post" class="bg-light m-5" >
+        {% csrf_token %}
+        <p>Are you sure you want to delete booking "{{object.name}}"?</p>
+        {{ form }}
+        <button type="submit" class="btn btn-outline-danger btn-light fw-bolder text-black">Cancel Car</button>
+    </form>
+</div>
+{% endblock content %}

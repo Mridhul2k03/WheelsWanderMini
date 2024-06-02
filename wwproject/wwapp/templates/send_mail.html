@@ -1,0 +1,20 @@
+{% extends 'admin_panel.html' %}
+{% block content %}
+<div class="" style="min-height: 10vh;width: 100%;"></div>
+<div class="card mx-auto mt-5 bg-light border-0 justify-content-center align-content-center  " style="width: 40rem;">
+    <!-- <img src="..." class="card-img-top" alt="..."> -->
+    <div class="card-body">
+        <form action="" method="POST">
+            {% csrf_token%}
+            <!-- <label for="">Email ID:</label> -->
+            <!-- <input type="email" name="" placeholder="Email" class="form-control m-2" > -->
+            <!-- <label for="">Subject :</label> -->
+            <input type="text" name="subject" placeholder="Subject" value="{{mail.message}}" class=" form-control m-2" >
+            <!-- <label for="">Message :</label> -->
+            <!-- <input type="text" name="message" placeholder="Message" class="w-100 m-2"><br> -->
+            <textarea class="form-control m-2" name="message" rows="5" placeholder="Replay"></textarea>
+            <input type="submit"  name="" id="" value="SendMail" class="btn btn-light btn-outline-dark m-2" >
+        </form>
+    </div>
+  </div>
+{% endblock content %}

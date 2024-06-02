@@ -1,0 +1,37 @@
+{% extends 'user_index.html' %}
+{% block nav %}
+<nav class="navbar fixed-top navbar-expand-lg navmain px-2 navbar-dark">
+    <a class="navbar-brand" href="{% url 'admin' %}">RCAR </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="main_nav">
+        <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin' %}">HOME<a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'add_location_view' %}">
+                    ADD LOCATIONS </a></li>
+            <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Available Plans
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="navbarDropdown" id>
+                    <li><a class="dropdown-item" href="#">Monthly plan</a></li>
+                    <li><a class="dropdown-item" href="#">Per Day plan</a></li>
+                    <li><a class="dropdown-item" href="#">Hours Plan</a></li>
+                </ul>
+            </li> -->
+            <li class="nav-item active "><a class="nav-link" href="{% url 'admin_car' %}">
+                    EDIT CARS</a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'mails_view' %}">
+                    MAILS </a></li>
+            <li class="nav-item"><a class="nav-link" href="{% url 'admin_car_add' %}">
+                    ADD CARS </a></li>
+        </ul>
+        <a class=" m-2 text-light text-decoration-none " href="{% url 'logout_view' %}">LOGOUT</a>
+
+</nav>
+{% endblock nav %}
+

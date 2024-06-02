@@ -1,0 +1,73 @@
+{% extends 'access_home.html' %}
+
+{% block content %}
+<div style="height: 70px;" class="w-100 ">
+</div>
+    
+</div>
+{% for i in blog %}
+<div class="card ms-3 mx-auto mt-2 float-start " style="width: 20rem;">
+    {% if not i.image %}
+    
+{% else %}
+    <img src="{{ i.image.url }}" alt="" class="m-2 w-auto " >
+{% endif %}
+    <div class="card-body">
+        {{ i.description }}
+        {%  if i.rating == 0 or i.rating is none %}
+            <div class="text-warning">
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+            </div>
+        {% elif i.rating == 1 %}
+            <div class="text-warning">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+            </div>
+        {% elif i.rating == 2 %}
+            <div class="text-warning">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+            </div>
+        {% elif i.rating == 3 %}
+            <div class="text-warning">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+            </div>
+        {% elif i.rating == 4 %}
+            <div class="text-warning">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="far fa-star" aria-hidden="true"></i>
+            </div>
+        {% elif i.rating >= 5 %}
+            <div class="text-warning">
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+                <i class="fa fa-star" aria-hidden="true"></i>
+            </div>
+        <div class="card-footer">
+            <h1>{{i.user}}</h1>
+            
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

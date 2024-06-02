@@ -1,0 +1,411 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>WheelsWander</title>
+    <meta charset="utf-8" />
+    <link rel="icon" href="{% static 'imgs/favicon.ico' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- <link rel="stylesheet" href="{% static 'style.css' %}" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css"
+        integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Trirong">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sedan:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xQ5rfvFLGCL7a9fI5fJCf55e9jJTosQ05o9P5ytgWO4PBAM0T+XSmHBb+E6Fj+twAWVJufJysimAmF1I4/zjag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+{% block css %}
+    <style>
+        .navmain{
+            background-color:rgba(0, 0, 0, 0.667);
+            color: white;
+            font-size: large;
+            /* font-family: Arial, Helvetica, sans-serif; */
+        }
+        
+        .cardp:hover .cardb {
+            right: -25%;
+        }
+        
+        .cardb {
+            width: 100%;
+            height: 100%;
+            top: 0;
+            right: -100%;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.338);
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            color: black;
+            transition: right 1.5s; /* Changed transition property to only affect 'right' */
+        }
+        
+        .cardp {
+            overflow: hidden;
+            position: relative;
+            transition: 1s;
+        }
+        .card-img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .cardp:hover{
+            transform: scale(1.113);
+            z-index: 2;
+        }
+        .cardmp:hover .cardmb {
+            bottom: -25%;
+            
+        }
+        
+        .cardmb {
+            width: 100%;
+            height: 100%;
+            bottom:-100% ;
+            position: absolute;
+            background: rgba(255, 255, 255, 0.338);
+            backdrop-filter: blur(5px);
+            padding: 10px;
+            color: black;
+            transition: bottom 1.5s; /* Changed transition property to only affect 'right' */
+        }
+        
+        .cardmp {
+            overflow: hidden;
+            position: relative;
+
+        }
+        .card-imgmp {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        body {
+            font-family: "Trirong", serif;
+          }
+        .navmain{
+            font-family: "Sedan", serif;
+            background-color:rgba(0, 0, 0, 0.667);
+            color: white;
+            font-size: large;
+        }
+        .ls{
+            font-family: "Sedan", serif;
+        }
+        .parallaxmain{
+            min-height: 500px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center; 
+            background-image: url("{% static 'imgs/carsframe1.jpg' %}");
+        }
+        .sidenav {
+            margin-top: 100px;
+            height: 100%;
+            width: 100px;
+            position: fixed;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            background-color: #111;
+            overflow-x: hidden;
+            padding-top: 20px;
+          }
+          
+          
+          
+          .sidenav a:hover {
+            color: #f1f1f1;
+          }
+          .parallaxmainpage{
+            min-height: 500px;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: center; 
+            background-image: url("{% static 'imgs/bg_3.jpg' %}");
+          }
+          .mcard:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition-delay: 0.4s;
+        }
+        .badgec {
+            position: absolute;
+            top: 10px; /* Adjust top position as needed */
+            left: 10px; /* Adjust left position as needed */
+            background-color: rgb(255, 179, 0); /* Adjust badge background color */
+            color: #fff; /* Adjust badge text color */
+            padding: 5px 10px; /* Adjust padding as needed */
+            border-radius: 5px; /* Adjust border radius as needed */
+            font-weight: bold;
+          }
+          .navmain{
+            font-family: "Sedan", serif;
+          }
+          .navmain{
+            background-color:rgba(0, 0, 0, 0.667);
+        
+            color: white;
+            font-size: large;
+            /* font-family: Arial, Helvetica, sans-serif; */
+        }
+        ::-webkit-scrollbar{
+            display: none;
+        }
+         
+        
+    </style>
+{% endblock css %}
+</head>
+{% block body %}
+<body class="parallaxmainpage">
+{% endblock body%}
+    {% block nav %}
+    <nav class="navbar fixed-top navbar-expand-lg navmain px-2 navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="{% url 'enter_home' %}">WW</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav" style="color: #66fcf1;">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="{% url 'enter_home' %}">HOME</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'log_view' %}">LOCATION</a></li>
+                    
+                    <li class="nav-item"><a class="nav-link" href="{% url 'access_car' %}">AVAILABLE</a></li>
+                    <!-- <li class="nav-item"><a class="nav-link" href="{% url 'mails_view' %}">UserMails</a></li> -->
+                    <li class="nav-item"><a class="nav-link" href="{% url 'blog_access' %}">REVIEW</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'log_view' %}">CONTACT</a></li>
+
+                </ul>
+                <a class="ls text-decoration-none text-light" href="{% url 'log_view' %}">LOGIN</a>/<a href="{% url 'reg_view' %}" class="ls text-decoration-none text-light">SIGNUP</a>
+            </div>
+        </div>
+    </nav>
+    
+    {% endblock nav %}
+  {% block content %}
+ 
+    <div class=" text-center justify-content-center align-content-center " style="width:100%;height: 100vh;">
+        <h1 class="fw-bold text-warning text-out" style="text-shadow: 2px 2px 4px black;">Welcome <span class="fw-lighter fs-4">to</span> WheelsWander</h1>
+        <h5>India's First Largest Car Renter Dealers</h5>
+    </div>
+    <div class=" " style="aspect-ratio: 16/1; text-align: center;background-color:#E4E4E3 ;">
+        <img src="{% static 'imgs/logo.png' %}" alt="" class="mx-auto" style="width: 100px; height: 100px;">
+    </div>
+    
+    <div style="width: 100%;height: 70vh;">
+
+    </div>
+    <section class="py-5 sb">
+        <div class="container fc px-4 px-lg-5 mt-5">
+            <h1 class="text-center mb-5 fw-bolder " style="text-shadow: 2px 2px 4px rgba(0, 0, 0);color:white" >VARIOUS COLLECTION OF CARS</h1>
+            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+                <div class="col mb-5">
+                    <div class="card cardmp">
+                        <!-- Product image-->
+                        <img src="{% static 'imgs/maincardimg1.jpg' %}" class="card-imgmp  rounded-1" alt="..." style="height: 30rem;">
+                        <div class="card-body cardmb p-4">
+                            <h1>Luxuary</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card cardmp">
+                        <!-- Product image-->
+                        <img src="{% static 'imgs/maincardimg2.jpg' %}" class="card-imgmp  rounded-1 " alt="..." style="height: 30rem;">
+                        <div class="card-body cardmb p-4">
+                            <h1>Sporty</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card cardmp">
+                        <!-- Product image-->
+                        <img src="{% static 'imgs/mainimg7.jpg' %}" class="card-imgmp  rounded-1 " alt="..." style="height: 30rem;">
+                        <div class="card-body cardmb p-4">
+                            <h1>EVs</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container fc px-4 px-lg-5 mt-5">
+            <div class="row gx-4 gx-lg-5 row-cols-1 row-cols-md-2 row-cols-xl-3 justify-content-center">
+                <div class="col mb-5">
+                    <div class="card cardmp">
+                        <!-- Product image-->
+                        <img src="{% static 'imgs/maincardimg4.jpg' %}" class="card-imgmp  rounded-1" alt="..." style="height: 30rem;">
+                        <div class="card-body cardmb p-4">
+                            <h1>Vintage</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card cardmp">
+                        <!-- Product image-->
+                        <img src="{% static 'imgs/maincardimg5.jpg' %}" class="card-imgmp  rounded-1 " alt="..." style="height: 30rem;">
+                        <div class="card-body cardmb p-4">
+                            <h1>Coupes</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col mb-5">
+                    <div class="card cardmp">
+                        <!-- Product image-->
+                        <img src="{% static 'imgs/mainimg8.jpg' %}" class="card-imgmp  rounded-1 " alt="..." style="height: 30rem;">
+                        <div class="card-body cardmb p-4">
+                            <h1>Pickup trucks</h1>
+                            <p></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <h1 class="text-center mb-5 fw-bolder " style="text-shadow: 2px 2px 4px rgb(0, 0, 0);color:white">WheelsWander collection is quadrupled</h1> -->
+        <h1 class="text-center mb-5 fw-bolder " style="text-shadow: 2px 2px 4px rgb(0, 0, 0);color:white">"IN LIFE YOU EITHER A PASSENGER OR A PILOT BUT CHOICE IS <span class="text-warning ">YOURS</span> "</h1>
+    </section>
+    {% block footer %}
+        <!-- Footer -->
+        <footer class="page-footer font-small  lighten-5 bg-dark text-light">
+        
+          <div class="bg-warning ">
+            <div class="container">
+        
+              <!-- Grid row-->
+              <div class="row py-4 d-flex align-items-center">
+        
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                  <h6 class="mb-0 text-black">Get start with WheelsWander!</h6>
+                </div>
+                <!-- Grid column -->
+        
+                <!-- Grid column -->
+                <div class="col-md-6 col-lg-7 text-center text-md-right">
+        
+                 <a href=""><i class=" ms-4 fab fa-facebook-f  " style="color:#1877F2;text-shadow: 2px 2px 1px rgb(0,0,0,0.113);"></i></a>
+                 <a href=""><i class=" ms-4 fab fa-linkedin-in " style="color:#0077B5;text-shadow: 2px 2px 1px rgb(0,0,0,0.113);"></i></a>
+                 <a href=""><i class=" ms-4 fab fa-whatsapp    " style="color:#075E54;text-shadow: 2px 2px 1px rgb(0,0,0,0.113);"></i></a> 
+                 <a href=""><i class=" ms-4 fab fa-instagram   " style="color:#c1558b;text-shadow: 2px 2px 1px rgb(0,0,0,0.113);"></i></a>
+        
+                </div>
+                <!-- Grid column -->
+        
+              </div>
+              <!-- Grid row-->
+        
+            </div>
+          </div>
+        
+          <!-- Footer Links -->
+          <div class="container text-center text-md-left mt-5">
+        
+            <!-- Grid row -->
+            <div class="row mt-3 dark-grey-text">
+        
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-4 col-xl-3 mb-4">
+        
+                <!-- Content -->
+                <h6 class="text-uppercase font-weight-bold">WheelsWander</h6>
+                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>Luxuary, Premium, Non Premium Car renters in INDIA ,now inlybin Kerala</p>
+        
+              </div>
+              <!-- Grid column -->
+        
+              <!-- Grid column -->
+              <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+        
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Available Services</h6>
+                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p><a class="text-light" href="#!">Car Renting</a></p>
+                <p><a class="text-light" href="#!">PPF & Sticker Works... (Coming Soon)</a></p>
+                <p><a class="text-light" href="#!">Car Customisations... (Coming Soon)</a></p>        
+              </div>
+              <!-- Grid column -->
+        
+              <!-- Grid column -->
+              <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+        
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Connect Us</h6>
+                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p><a class="text-light" href="#!">Facebook</a></p>
+                <p><a class="text-light" href="#!">Linked-in</a></p>
+                <p><a class="text-light" href="#!">WhatsApp</a></p>
+                <p><a class="text-light" href="#!">Instagram</a></p>
+        
+              </div>
+              <!-- Grid column -->
+        
+              <!-- Grid column -->
+              <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+        
+                <!-- Links -->
+                <h6 class="text-uppercase font-weight-bold">Contact</h6>
+                <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                <p>
+                  <i class="fas fa-home mr-3"></i> INDIA, KERALA, CALICUT</p>
+                <p>
+                  <i class="fas fa-envelope mr-3"></i> wheelswander@gmail.com</p>
+                <p>
+                  <i class="fas fa-phone mr-3"></i> + 91 999 888 777 00</p>
+                <p>
+                  <i class="fas fa-print mr-3"></i> + 91 999 888 777 11</p>
+        
+              </div>
+              <!-- Grid column -->
+        
+            </div>
+            <!-- Grid row -->
+        
+          </div>
+          <!-- Footer Links -->
+        
+          <!-- Copyright -->
+          <div class="footer-copyright text-center  py-3">&COPY;  2024 Copyright:
+            <a class="dark-grey-text" href="https://wheelswander.com/"> WheelsWander.com</a>
+          </div>
+          <!-- Copyright -->
+        
+        </footer>
+        <!-- Footer -->
+
+    {% endblock footer%}
+    {% endblock content %}
+    
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

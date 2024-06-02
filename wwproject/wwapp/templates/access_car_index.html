@@ -1,0 +1,130 @@
+{% extends 'access_home.html'%}
+
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark  sticky-top px-2 navmain">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'user_home' %}">RCAR</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav"
+            aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" href="{% url 'enter_home' %}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">LOCATION</a>
+                </li>
+                <!-- Dropdown Example -->
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Filter
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">1</a></li>
+                        <li><a class="dropdown-item" href="#">2</a></li>
+                        <li><a class="dropdown-item" href="#">3</a></li>
+                    </ul>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'access_car' %}">AVAILABLE</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link" href="#">OFFERS</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'blog_access' %}">REVIEW</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'log_view' %}">CONTACT</a>
+                </li>
+            </ul>
+            <a class="ls text-decoration-none text-light" href="{% url 'log_view' %}">LOGIN</a>/<a href="{% url 'reg_view' %}" class="ls text-decoration-none text-light">SIGNUP</a>
+        </div>
+    </div>
+</nav>
+
+    {% endblock nav %}
+{% block content %}
+
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for i in cars %}
+            {% if i.exclusive %}
+            <a href="{% url 'car_detail_view' i.id %}">
+                <div class="col mb-5">
+                    <div  class="card cardp h-100 pcard" >
+                        <div class="badge badgec ribbon">Exclusive</div>
+                        <img src="{{ i.image_black.url }}" class="card-img rounded-1 w-100" alt="..." >
+                        <!-- Product details-->
+                        <div class="card-body cardb p-4">
+                            <table class="table-borderless table-responsive ">
+                                <tr>
+                                    <td><p>{{ i.name }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-fuel-pump-fill"></i>{{ i.fuel }}</td>
+                                </tr>
+                                <tr>
+                                    {% if i.fuel == 'electric' %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / S_C</td>
+                                    {% else %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / L</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-gear"></i>{{ i.transmission }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-currency-rupee"></i>{{ i.price }}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+            {% else %}
+            <a href="{% url 'car_detail_view' i.id %}">
+                <div class="col mb-5">
+                    <div  class="card cardp h-100 pcard" >
+                        <img src="{{ i.image_black.url }}" class="card-img rounded-1 w-100" alt="..." >
+                        <!-- Product details-->
+                        <div class="card-body cardb p-4">
+                            <table class="table-borderless table-responsive ">
+                                <tr>
+                                    <td><p>{{ i.name }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-fuel-pump-fill"></i>{{ i.fuel }}</td>
+                                </tr>
+                                <tr>
+                                    {% if i.fuel == 'electric' %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / S_C</td>
+                                    {% else %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / L</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-gear"></i>{{ i.transmission }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-currency-rupee"></i>{{ i.price }}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

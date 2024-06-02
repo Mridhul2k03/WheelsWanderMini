@@ -1,0 +1,35 @@
+{% extends 'user_profile_view.html'%}
+{% block script%}
+
+{% endblock script %}
+{% block content %}
+<div class="card mt-3 mx-auto" style="width: 40rem;">
+  <div class="card-body">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!-- {{form}} -->
+        Photo  :  {{form.image}}
+        <br> <br>
+        {{form.name}} <br>
+        Address :
+        <hr>
+        {{form.place}} <br>
+        {{form.city}} <br>
+        {{form.state}} 
+        <hr>
+        {{form.phone}} <br>
+        {{form.dob}} <br>
+        <span class="form-control w-50 float-start "><label for="" class=" ">Status :</label>
+        {{form.status}}</span>
+        <span class="form-control w-50 float-start"><label for="" class="" >Gender :</label>
+        {{form.gender}}
+        </span>
+        <br>
+        <br> <br>
+        <button type="submit" class="btn btn-outline-success d-flex fw-bolder fs-6 justify-content-center w-100">Save</button> 
+    </form> 
+  </div>
+</div>
+
+
+{% endblock content %}

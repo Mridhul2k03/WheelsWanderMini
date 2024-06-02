@@ -1,0 +1,40 @@
+{% extends 'admin_panel.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .lcard{
+        background-image: url('{% static "imgs/locationbg.jpg" %}');
+        background-repeat: repeat-x;
+        background-position: right;
+        background-size: cover;
+    }
+</style>
+<div style="aspect-ratio: 16/1;"></div>
+<div class="container-fluid text-start ps-5 fw-bolder m-4 text-black " style="text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.685);">
+    <h4 class="">It's our garage locations</h4>
+    <h4 class="">Click and locate your nearby garage then show your booking and pick your Car</h4>
+</div>
+<div class="container">
+    <table class="bg-light text-start mx-auto table table-responsive-lg table-dark table-striped table-bordered   ">
+        <tr class="fw-bold">
+            <th>User</th>
+            <th>Full name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Send Replay</th>
+            
+        </tr>
+        {% for i in mail %}
+        <tr>
+            <td>{{i.user.id}}</td>
+            <td>{{i.fname}}</td>
+            <td>{{i.email}}</td>
+            <td>{{i.message}}</td>
+            <td><a href="{% url 'admin_replay' i.id %}" class="btn btn-outline-success ">Replay</a></td>
+                      
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content%}

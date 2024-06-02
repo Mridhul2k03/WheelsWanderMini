@@ -1,0 +1,63 @@
+{% extends 'user_profile_view.html' %}
+{% block content %}
+<div style="min-height: 10vh;"></div>
+{% if userpro %}
+    {% for i in userpro %}
+    <section class="justify-content-center align-content-center" style="width: 100%;height: 100vh;">
+        <div class="card mx-auto  m-5 " style="width: 35rem;">
+          <img src="{{ i.image.url }}" class="card-img-top rounded-circle w-50 mx-auto m-4" alt="User Photo" style="width: 18rem;height: 18rem;" >
+            <table class="table table-responsive table-borderless  ">
+                <tr>
+                    <td>name</td>
+                    <td>{{i.name}}</td>
+                </tr>
+                <tr>
+                    <td>Address</td>
+                    <td>{{i.place}},{{i.city}},{{i.state}}</td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td>{{i.phone}}</td>
+                </tr>
+                <tr>
+                    <td>Date of birth</td>
+                    <td>{{i.dob}}</td>
+                </tr>
+                <tr>
+                    <td>status</td>
+                    <td>{{i.status}}</td>
+                </tr>
+                <tr>
+                    <td>Gender</td>
+                    <td>{{i.gender}}</td>
+                </tr>
+            </table>
+            <a href="{% url 'user_pro_edit_view' i.id %}"><button class="btn btn-danger ">Edit</button></a>
+        </div>
+    </section>
+    {% endfor %}
+{% else %}
+<div class="d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+    <a class="btn btn-success" href="{% url 'user_detail_view' user.id %}">Creat A Profile</a>
+</div>
+
+    
+{% endif %}
+{% endblock content %}
+
+<div class="card-body">
+    <!-- <label for="">Name :</label> <br> -->
+    {{i.name}} <br>
+    <label for="">Address :</label> <br>
+    <span>{{i.place}}</span><span> {{i.city}} </span> <span> {{i.state}} </span> <br>
+    <label for="">Contact :</label> <br>
+    {{i.phone}} <br>
+    <label for="">Date Of Birth :</label>
+    {{i.dob}} <br>
+    <label for="">Status :</label>
+    {{i.status}} <br>
+    <label for="">Gender</label>
+    {{i.gender}}
+    <br>
+    <a href="" class="btn btn-outline-success ">Edit </a>
+  </div>

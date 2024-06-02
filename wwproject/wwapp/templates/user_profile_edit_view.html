@@ -1,0 +1,46 @@
+{% extends 'user_index.html'%}
+{% block content %}
+<div style="aspect-ratio: 16/1;"></div>
+<div class="container ">
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token  %}
+    <table class="table table-responsive table-borderless  ">
+        <tr>
+            <td>name</td>
+            <td>{{form.name}}</td>
+        </tr>
+        <tr>
+            <td>image</td>
+            <td>{{form.image}}</td>
+        </tr>
+        <tr>
+            <td>Address</td>
+            <td>{{form.place}}{{form.city}}{{form.state}}</td>
+        </tr>
+        <tr>
+            <td>Contact</td>
+            <td>{{form.phone}}</td>
+        </tr>
+        <tr>
+            <td>Date of birth</td>
+            <td>{{form.dob}}</td>
+        </tr>
+        <tr>
+            <td>status</td>
+            <td>{{form.status}}</td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td>{{form.gender}}</td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <button class="btn btn-outline-success " type="submit">Save Changes</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+{% endblock content %}

@@ -1,0 +1,215 @@
+{% extends 'user_index.html' %}
+{% load static %}
+{% block body %}
+<body class="parallaxmain">
+{% endblock body%}
+{% block nav %}
+<nav class="navbar navbar-expand-lg navbar-dark  px-2 navmain">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'user_home' %}">WW</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#main_nav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="main_nav">
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link  " href="{% url 'user_home' %}">HOME</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{% url 'location_view' %}">LOCATIONS</a>
+                </li>
+                <!-- Dropdown Example -->
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link mx-3 dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        Available Plans
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Monthly plan</a></li>
+                        <li><a class="dropdown-item" href="#">Per Day plan</a></li>
+                        <li><a class="dropdown-item" href="#">Hours Plan</a></li>
+                    </ul>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link active " href="{% url 'carslist_view' %}">AVAILABLE</a>
+                </li>
+                <!-- <li class="nav-item">
+                    <a class="nav-link " href="#">OFFERS</a>
+                </li> -->
+                <li class="nav-item">
+                    <a class="nav-link " href="{% url 'user_blog_view' %}">REVIEW</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " href="{% url 'user_message' %}">CONTACT</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link  text-light" href="{% url 'logout_view' %}">LOGOUT</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light me-2" href="{% url 'user_bookings' %}">
+                        <i class="bi bi-car-front"></i>
+                        <span class="badge bg-dark text-white ms-1 rounded-pill">{{ count }}</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light" href="{% url 'user_profile_view' user.id %}">
+                        <i class="bi bi-person-circle"></i>
+                        {{ user.username }}
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+{% endblock nav %}
+{% block content %}
+<div class="" style="height: 12vh;">
+     <!-- <img src="{% static 'imgs/carsframe1.jpg' %}" alt="" class="w-100"> -->
+</div>
+<nav class="navbar navbar-expand-lg navbar-dark px-2 navmain sticky-top " style="border-bottom: 2px solid white; border-top: 2px solid white;">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#sub_nav" aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="sub_nav">
+
+            <ul class="navbar-nav mx-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link mx-3 active " href="{% url 'carslist_view' %}">All</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'sedan_view' %}">Sedan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'coupe_view' %}">Coupe</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'suv_view'%}">SUV</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'wagon_view' %}">Wagon</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'con_view' %}">Convertible</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'hatch_view' %}">Hatchback</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'pickup_view' %}">Pickup</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link mx-3" href="{% url 'van_view' %}">Van</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for i in cars %}
+            {% if i.exclusive %}
+            <a href="{% url 'car_detail_view' i.id %}">
+                <div class="col mb-5">
+                    <div  class="card cardp h-100 pcard" >
+                        <div class="badge badgec ribbon">Exclusive</div>
+                        <img src="{{ i.image_black.url }}" class="card-img rounded-1 w-100" alt="..." >
+                        <!-- Product details-->
+                        <div class="card-body cardb p-4">
+                            <table class="table-borderless table-responsive ">
+                                <tr>
+                                    <td><p>{{ i.name }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-fuel-pump-fill"></i>{{ i.fuel }}</td>
+                                </tr>
+                                <tr>
+                                    {% if i.fuel == 'electric' %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / S_C</td>
+                                    {% else %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / L</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-gear"></i>{{ i.transmission }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-currency-rupee"></i>{{ i.price }}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+            {% else %}
+            <a href="{% url 'car_detail_view' i.id %}">
+                <div class="col mb-5">
+                    <div  class="card cardp h-100 pcard" >
+                        <img src="{{ i.image_black.url }}" class="card-img rounded-1 w-100" alt="..." >
+                        <!-- Product details-->
+                        <div class="card-body cardb p-4">
+                            <table class="table-borderless table-responsive ">
+                                <tr>
+                                    <td><p>{{ i.name }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-fuel-pump-fill"></i>{{ i.fuel }}</td>
+                                </tr>
+                                <tr>
+                                    {% if i.fuel == 'electric' %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / S_C</td>
+                                    {% else %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / L</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-gear"></i>{{ i.transmission }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-currency-rupee"></i>{{ i.price }}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- <script>
+    function changePage(pageUrl) {
+        window.location.href = pageUrl; // Redirect to the specified URL
+    }
+</script> -->
+{% endblock content %}
+
+<!-- <div class="row justify-content-center">
+    <div class="card carcard mx-auto mt-4 text-dark float-start" style="width:38rem; transition: transform 0.3s ease;">
+        <div class="row ">
+            <div class="col-md-6">
+                <img src="{{ car.image_black.url }}" class="card-img-top cardimage my-2 rounded-1 " alt="..." style="height: 18rem;">
+            </div>
+            <div class="col-md-6">
+                <div class="card-body">
+                    <p class="text-center fs-5 fw-bold cname">{{ car.name }}</p>
+                    <hr>
+                    <p class="text-center fw-bold fs-4">{{ car.brand }}</p>
+                    <p class="text-center text-capitalize">Type: <span class="fw-bold">{{ car.Type }}</span></p>
+                    <a href="{% url 'car_detail_view' car.id %}" class="btn btn-outline-dark d-flex justify-content-center">Details</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

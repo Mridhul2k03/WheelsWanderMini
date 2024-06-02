@@ -1,0 +1,82 @@
+{% extends 'admin_panel.html' %}
+{% block content %}
+<section class="py-5">
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+            {% for i in cars %}
+            {% if i.exclusive %}
+            <a href="{% url 'admincard_view' i.id %}">
+                <div class="col mb-5">
+                    <div  class="card cardp h-100 pcard" >
+                        <div class="badge badgec ribbon">Exclusive</div>
+                        <img src="{{ i.image_black.url }}" class="card-img rounded-1 w-100" alt="..." >
+                        <!-- Product details-->
+                        <div class="card-body cardb p-4">
+                            <table class="table-borderless table-responsive ">
+                                <tr>
+                                    <td><p>{{ i.name }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-fuel-pump-fill"></i>{{ i.fuel }}</td>
+                                </tr>
+                                <tr>
+                                    {% if i.fuel == 'electric' %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / S_C</td>
+                                    {% else %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / L</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-gear"></i>{{ i.transmission }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-currency-rupee"></i>{{ i.price }}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+            {% else %}
+            <a href="{% url 'admincard_view' i.id %}">
+                <div class="col mb-5">
+                    <div  class="card cardp h-100 pcard" >
+                        <img src="{{ i.image_black.url }}" class="card-img rounded-1 w-100" alt="..." >
+                        <!-- Product details-->
+                        <div class="card-body cardb p-4">
+                            <table class="table-borderless table-responsive ">
+                                <tr>
+                                    <td><p>{{ i.name }}</p></td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-fuel-pump-fill"></i>{{ i.fuel }}</td>
+                                </tr>
+                                <tr>
+                                    {% if i.fuel == 'electric' %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / S_C</td>
+                                    {% else %}
+                                        <td><i class="me-2 bi bi-speedometer"></i>{{ i.milage }} Km / L</td>
+                                    {% endif %}
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-gear"></i>{{ i.transmission }}</td>
+                                </tr>
+                                <tr>
+                                    <td><i class="me-2 bi bi-currency-rupee"></i>{{ i.price }}</td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+                </div>
+            </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

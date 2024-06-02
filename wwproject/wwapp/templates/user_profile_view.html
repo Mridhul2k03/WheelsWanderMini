@@ -1,0 +1,16 @@
+{% extends 'user_cars.html' %}
+{% block content %}
+        <div class="card mx-auto mt-5" style="width: 20rem;">
+          <div class="card-body">
+            <h5 class="card-title">Name : {{user.first_name}} {{user.last_name}}</h5>
+            <p class="card-text">Email : {{user.email}}</p>
+            Date Joined : {{user.date_joined}}
+          </div>
+          <a href="{% url 'user_pro_view' %}" class="btn btn-outline-dark ">
+            View profile
+          </a>
+        </div>
+
+
+        
+{% endblock content %}

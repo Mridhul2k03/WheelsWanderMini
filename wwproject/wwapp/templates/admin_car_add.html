@@ -1,0 +1,84 @@
+{% extends 'admin_panel.html'%}
+{% block content %}
+<div class="card mx-auto my-5" style="width: 50rem;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+  <div class="card-body align-content-center justify-content-center ">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class=" table table-bordered table-responsive-md ">
+            <tr>
+                <td class="text-capitalize">model</td>
+                <td>{{form.name}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">Descreption</td>
+                <td>{{form.desc}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">Category</td>
+                <td>{{form.category}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">Company</td>
+                <td>{{form.brand}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">type</td>
+                <td>{{form.Type}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">Fuel type</td>
+                <td>{{form.fuel}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">Transmission</td>
+                <td>{{form.transmission}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">image 1</td>
+                <td>{{form.image_black}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">image 2</td>
+                <td>{{form.image_white}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">image 3</td>
+                <td>{{form.image_red}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">image 4</td>
+                <td>{{form.image_blue}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">image 5</td>
+                <td>{{form.image_green}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">Mileage</td>
+                <td>{{form.milage}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">price</td>
+                <td>{{form.price}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">duration</td>
+                <td>{{form.duration}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">is available</td>
+                <td>{{form.status}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">is Exclusive</td>
+                <td>{{form.exclusive}}</td>
+            </tr>
+            <tr>
+                <td class="text-capitalize">Save</td>
+                <td><input type="submit" class="btn btn-outline-success btn-dark"></td>
+            </tr>
+        </table>
+    </form>
+    </div>
+</div>
+{% endblock content %}

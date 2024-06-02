@@ -1,0 +1,16 @@
+{% extends 'user_index.html' %}
+
+{% block content %}
+<div style="height: 70px;" class="w-100">
+</div>
+<div class="card mx-auto " style="width: 50rem;">
+  <div class="card-body">
+    <form action="" method="POST" class=" " enctype="multipart/form-data">
+        {% csrf_token %}
+        {{form}}
+        <br>
+        <input type="submit" name="" id="" class="btn btn-outline-success d-flex ">
+    </form>
+  </div>
+</div>
+{% endblock content %}

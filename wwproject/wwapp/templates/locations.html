@@ -1,0 +1,35 @@
+{% extends 'user_index.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .lcard{
+        background-image: url('{% static "imgs/locationbg.jpg" %}');
+        background-repeat: repeat-x;
+        background-position: right;
+        background-size: cover;
+    }
+</style>
+<div style="aspect-ratio: 16/1;"></div>
+<div class="container-fluid text-start ps-5 fw-bolder m-4 text-black " style="text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.685);">
+    <h4 class="">It's our garage locations</h4>
+    <h4 class="">Click and locate your nearby garage then show your booking and pick your Car</h4>
+</div>
+<div class="container">
+    <table class="bg-light text-start mx-auto table table-responsive-lg table-light table-striped table-bordered   ">
+        <tr class="fw-bold">
+            <th>District</th>
+            <th>Area</th>
+            <th>Location</th>
+        </tr>
+        {% for i in loc %}
+        <tr>
+            <td>{{i.place}}</td>
+            <td>{{i.area}}</td>
+            <td><a href="{{i.link}}" class="text-decoration-none text-black fw-bold "> <i class="bi bi-geo-alt"></i>Go to location</a></td>           
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock content%}
+
